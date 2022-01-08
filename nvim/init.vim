@@ -79,8 +79,9 @@ colorscheme onehalfdark
 lua require('suyash')
 
 " remaps
-nnoremap <C-p> :Telescope find_files<Cr>
-nnoremap <C-f> :NERDTreeToggle<Cr>
+nnoremap <leader>p :Telescope find_files<Cr>
+nnoremap <leader>b :Telescope buffers<Cr>
+nnoremap <leader>f :NERDTreeToggle<Cr>
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
