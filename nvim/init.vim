@@ -63,6 +63,9 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+" NerdTree
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Lightline
 Plug 'itchyny/lightline.vim'
 " One Half Color Theme
@@ -77,4 +80,8 @@ lua require('suyash')
 
 " remaps
 nnoremap <C-p> :Telescope find_files<Cr>
+nnoremap <C-f> :NERDTreeToggle<Cr>
+
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
