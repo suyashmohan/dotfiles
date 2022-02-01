@@ -1,0 +1,7 @@
+[user]
+	name = Suyash Mohan
+	email = suyashatweb@gmail.com
+[credential]
+	helper = !\"C:/Users/Suyash/scoop/apps/git/2.35.1.windows.1/mingw64/libexec/git-core/git-credential-manager-core.exe\"
+[credential "helperselector"]
+	selected = manager-core
