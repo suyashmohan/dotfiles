@@ -1,6 +1,7 @@
 -- lspconfig
 local nvim_lsp = require('lspconfig')
-local servers = { 'tsserver' }
+-- local servers = { 'tsserver' }
+local servers = {}
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -28,13 +29,23 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local servers = { 'tsserver' }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
         capabilities = capabilities,
         on_attach = on_attach,
     }
 end
+
+-- Special setup for tsserver and denols
+nvim_lsp.tsserver.setup{
+  -- Omitting some options
+  root_dir = nvim_lsp.util.root_pattern("package.json")
+}
+nvim_lsp.denols.setup {
+  -- Omitting some options
+  root_dir = nvim_lsp.util.root_pattern("deno.json"),
+
+}
 
 -- nvim-cmp
 local cmp = require('cmp')
@@ -84,4 +95,3 @@ cmp.setup {
         { name = 'luasnip' },
     },
 }
-
